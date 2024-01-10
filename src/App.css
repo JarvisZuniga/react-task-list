@@ -46,9 +46,8 @@
   color: #888;
 }
 
-.form {
-  display: flex;
-  gap: 1ch;
+.form {  
+  gap: 2ch;
   align-items: center;
 }
 
@@ -88,7 +87,6 @@
 }
 
 .check {
-  display: flex;
   align-items: center;
   justify-content: center;  
 }

@@ -1,26 +1,41 @@
+// TodoForm.jsx
 import React, { useState } from 'react';
 
-const TodoForm = ({ todos, setTodos }) => {
+const TodoForm = ({ addTodo }) => {
     const [todoInput, setTodoInput] = useState('');
+    const [descriptionInput, setDescriptionInput] = useState('');
 
-    const addTodo = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (todoInput.trim()) {
-        setTodos([...todos, { text: todoInput, isCompleted: false }]);
+        // Agregar nueva tarea
+        addTodo({
+            text: todoInput,
+            description: descriptionInput,
+            completed: false,
+        });
+        // Limpiar campos
         setTodoInput('');
+        setDescriptionInput('');
         }
     };
 
     return (
-        <form className='form' onSubmit={addTodo}>
+        <form className='form' onSubmit={handleSubmit}>
         <input
             type="text"
+            placeholder="Title"
             value={todoInput}
             onChange={(e) => setTodoInput(e.target.value)}
         />
+        <input
+            type="text"
+            placeholder="Description"
+            value={descriptionInput}
+            onChange={(e) => setDescriptionInput(e.target.value)}
+        />
         <button type="submit">Add</button>
-        
-    </form>
+        </form>
     );
 };
 
