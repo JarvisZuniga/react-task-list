@@ -1,4 +1,4 @@
-import './App.css'
+import './App.css';
 import React from 'react';
 import Header from './components/Header';
 
@@ -7,7 +7,7 @@ function App() {
     <div>
       <Header />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
