@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { Button } from '@chakra-ui/react'
+import { AddIcon } from '@chakra-ui/icons'
+import { Input, Stack } from '@chakra-ui/react'
+
 
 const TodoForm = ({ addTodo }) => {
   const [todoInput, setTodoInput] = useState('');
@@ -22,22 +26,21 @@ const TodoForm = ({ addTodo }) => {
       setDescriptionInput('');    
   };
 
-  return (
+  
+  return (  
+      
     <form className='form' onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Title"
-        value={todoInput}
-        onChange={(e) => setTodoInput(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Description"
-        value={descriptionInput}
-        onChange={(e) => setDescriptionInput(e.target.value)}
-      />
-      <button type="submit">Add</button>
+    <Stack spacing={2}>  
+      <Input size='sd' variant='filled' type="text" placeholder='Title' value={todoInput}  onChange={(e) => setTodoInput(e.target.value)} />
+      <Input size='sd' variant='filled' type="text" placeholder='Description'  value={descriptionInput}  onChange={(e) => setDescriptionInput(e.target.value)} />
+    </Stack>  
+     
+      <Button rightIcon={<AddIcon />} size='sm'  type="submit" colorScheme='black' variant='outline'>
+        New Task
+      </Button>
+      
     </form>
+    
   );
 };
 

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Icon } from '@chakra-ui/react'
+import { MdSettings } from 'react-icons/md'
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FaRegSquareCheck } from "react-icons/fa6";
@@ -57,10 +59,12 @@ const TodoList = ({ todos, deleteTodo, updateTodo }) => {
               <>
                 <span>{todo.text}</span>
             <span>{todo.description}</span>                                                   
-                            <div className='check'>                                
-                                <FaRegSquareCheck className='icon' onClick={() => toggleComplete(index)} />
-                                <FaEdit className='icon' onClick={() => startEditing(index, todo.text, todo.description)} />
-                                <FaRegTrashAlt className='icon' onClick={() => deleteTodo(index)}  />
+                            <div className='check'>
+                                                            
+                               <Icon as={FaRegSquareCheck} w={10} h={10} color='Black.500' className='transition' onClick={() => toggleComplete(index)} />                             
+                               <Icon as={FaEdit} w={10} h={10} color='Black.500' className='transition' onClick={() => startEditing(index, todo.text, todo.description)} />
+                               <Icon as={FaRegTrashAlt} w={10} h={10} color='Black.500' className='transition' onClick={() => deleteTodo(index)} />                                
+                                
                             </div>
                         </>
                         )}
