@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Icon } from '@chakra-ui/react'
-import { MdSettings } from 'react-icons/md'
 import { FaRegTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FaRegSquareCheck } from "react-icons/fa6";

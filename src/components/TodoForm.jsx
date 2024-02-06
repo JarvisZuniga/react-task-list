@@ -10,6 +10,7 @@ const TodoForm = ({ addTodo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     // Validación: El nombre de la tarea debe tener al menos 3 caracteres
     if (todoInput.trim().length < 3) {
       alert('El nombre de la tarea debe tener al menos 3 caracteres.');
@@ -21,6 +22,7 @@ const TodoForm = ({ addTodo }) => {
         description: descriptionInput,
         completed: false,
       });
+
     // Reinicia los campos del formulario
       setTodoInput('');
       setDescriptionInput('');    
@@ -33,12 +35,8 @@ const TodoForm = ({ addTodo }) => {
     <Stack spacing={2}>  
       <Input size='sd' variant='filled' type="text" placeholder='Title' value={todoInput}  onChange={(e) => setTodoInput(e.target.value)} />
       <Input size='sd' variant='filled' type="text" placeholder='Description'  value={descriptionInput}  onChange={(e) => setDescriptionInput(e.target.value)} />
-    </Stack>  
-     
-      <Button rightIcon={<AddIcon />} size='sm'  type="submit" colorScheme='black' variant='outline'>
-        New Task
-      </Button>
-      
+    </Stack>      
+      <Button rightIcon={<AddIcon marginLeft='center' />} size='sm'  type="submit" colorScheme='black' variant='outline'>Add</Button>      
     </form>
     
   );
