@@ -1,63 +1,46 @@
-import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Box, VStack, IconButton, useDisclosure, useColorMode } from "@chakra-ui/react";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 const Menu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, onToggle } = useDisclosure();
+  const { colorMode } = useColorMode();
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const bgColor = { light: 'white', dark: 'gray.800' };
+  const textColor = { light: 'black', dark: 'white' };
 
   return (
-    <nav className={`menu ${isOpen ? 'open' : ''}`}>
-      <button className="toggle-button" onClick={toggleMenu}>
-        ☰
-      </button>
-      <ul>
-        <li>
-          <Link to="/HomePage">Home /</Link>
-        </li>
-        <li>
-          <Link to="/Tareas">Tareas /</Link>
-        </li>
-        <li>
-          <Link to="/SobreNosotros">Sobre-Nosotros</Link>
-        </li>
-      </ul>
-    </nav>
+    <Box position="fixed" left="0" top="0">
+      <IconButton
+        aria-label="Toggle Menu"
+        icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+        onClick={onToggle}
+        variant="outline"
+      />
+      {isOpen && (
+        <VStack
+          alignItems="flex-start"
+          justifyContent="flex-start"
+          flexDirection="column"
+          bg={bgColor[colorMode]}
+          color={textColor[colorMode]}
+          p={4}
+        >
+          <NavItem to="/HomePage" text="Home" />
+          <NavItem to="/Tareas" text="Tareas" />
+          <NavItem to="/SobreNosotros" text="Sobre Nosotros" />
+        </VStack>
+      )}
+    </Box>
   );
 };
+
+const NavItem = ({ to, text }) => (
+  <Link to={to}>
+    <Box p={2}>
+      {text}
+    </Box>
+  </Link>
+);
 
 export default Menu;
-
-
-
-
-
-
-
-
-
-/*import React from 'react';
-import { Link } from 'react-router-dom';
-
-const Menu = () => {
-  return (
-    <nav  className="menu">
-      <ul>
-        <li>
-          <Link to="/HomePage"><button>Home</button> </Link> 
-        </li>
-        <li>
-          <Link to="/Tareas"><button>Tareas</button></Link> 
-        </li>
-        <li>
-          <Link to="/SobreNosotros"><button>Sobre Nosotros</button></Link>
-        </li>
-      </ul>
-    </nav>
-  );
-};
-
-export default Menu;*/
-

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Icon, Input, Button } from '@chakra-ui/react'
-import { FaRegTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import { FaEdit } from "react-icons/fa";
 import { FaRegSquareCheck } from "react-icons/fa6";
 
@@ -42,8 +42,8 @@ const TodoList = ({ todos, deleteTodo, updateTodo }) => {
           <div className="task-container">
             {editIndex === index ? (
               <div>
-                <Input placeholder='Title' size='xs' variant='filled' type="text" value={editedText} onChange={(e) => setEditedText(e.target.value)} />
-                <Input placeholder='Description' size='xs' variant='filled' type="text" value={editedDescription} onChange={(e) => setEditedDescription(e.target.value)} />                
+                <Input color='tomato' placeholder='Title' _placeholder={{ opacity: 0.4, color: 'inherit' }} size='xs' variant='Outline' type="text" value={editedText} onChange={(e) => setEditedText(e.target.value)} />
+                <Input color='tomato' placeholder='Description' _placeholder={{ opacity: 0.4, color: 'inherit' }} size='xs' variant='Outline' type="text" value={editedDescription} onChange={(e) => setEditedDescription(e.target.value)} />                
                 <Button colorScheme='blue' size='sm' onClick={() => finishEditing(index)}>Done</Button>         
               </div>
             ) : (
@@ -51,9 +51,9 @@ const TodoList = ({ todos, deleteTodo, updateTodo }) => {
                 <span>{todo.text}</span>
             <span>{todo.description}</span>                                                   
                             <div className='check'>                                                            
-                               <Icon as={FaRegSquareCheck} w={10} h={10} color='Black.500' className='transition' onClick={() => toggleComplete(index)} />                             
-                               <Icon as={FaEdit} w={10} h={10} color='Black.500' className='transition' onClick={() => startEditing(index, todo.text, todo.description)} />
-                               <Icon as={FaRegTrashAlt} w={10} h={10} color='Black.500' className='transition' onClick={() => deleteTodo(index)} />                                
+                               <Icon as={FaRegSquareCheck} w={10} h={10} color='gray.600' className='transition' onClick={() => toggleComplete(index)} />                             
+                               <Icon as={FaEdit} w={10} h={10} color='gray.600' className='transition' onClick={() => startEditing(index, todo.text, todo.description)} />
+                               <Icon as={FaTrashAlt} w={10} h={10} color='gray.600' className='transition' onClick={() => deleteTodo(index)} />                                
                             </div>
                         </>
                         )}
